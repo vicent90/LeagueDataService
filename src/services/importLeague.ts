@@ -33,7 +33,7 @@ export async function importLeague(leagueCode: string) {
         shortName: teamData.shortName,
         areaName: teamData.area.name,
         address: teamData.address,
-        league: league._id,
+        $addToSet: { leagues: league._id },
         players: [],
         coach: undefined
       },

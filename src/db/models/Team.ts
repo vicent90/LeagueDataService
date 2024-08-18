@@ -8,7 +8,7 @@ export interface ITeam extends Document {
   address: string;
   players: mongoose.Types.ObjectId[];
   coach: mongoose.Types.ObjectId | null;
-  league: mongoose.Types.ObjectId;
+  leagues: mongoose.Types.ObjectId[];
 }
 
 const TeamSchema: Schema = new Schema({
@@ -19,7 +19,7 @@ const TeamSchema: Schema = new Schema({
   address: { type: String, required: true },
   players: [{ type: Schema.Types.ObjectId, ref: 'Player' }],
   coach: { type: Schema.Types.ObjectId, ref: 'Coach', default: null },
-  league: { type: Schema.Types.ObjectId, ref: 'League', required: true },
+  leagues: [{ type: Schema.Types.ObjectId, ref: 'League', required: true }],
 });
 
 export const Team = mongoose.model<ITeam>('Team', TeamSchema);

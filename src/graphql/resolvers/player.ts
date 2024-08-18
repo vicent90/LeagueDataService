@@ -12,7 +12,7 @@ export const playerResolver = {
         }
 
         const teams = await Team.find({
-          league: league._id,
+          leagues: { $in: [league._id] },
           ...(teamName && { name: teamName })
         }).populate('players');
 
